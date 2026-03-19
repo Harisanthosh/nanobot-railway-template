@@ -134,6 +134,29 @@
 
             <div class="bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-800 rounded-xl p-4">
               <div class="flex items-center justify-between mb-3">
+                <h3 class="font-medium">Discord</h3>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="rounded bg-gray-100 border-gray-300 dark:bg-gray-800 dark:border-gray-600" x-model="config.channels.discord.enabled">
+                  <span class="text-xs text-gray-500 dark:text-gray-400">Enabled</span>
+                </label>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3" x-show="config.channels.discord.enabled">
+                <div>
+                  <label class="block text-xs text-gray-500 mb-1">Bot Token</label>
+                  <input type="password" class="w-full bg-gray-100 border border-gray-300 dark:bg-gray-800 dark:border-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                         x-model="config.channels.discord.token" placeholder="Discord bot token">
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-500 mb-1">Allowed Users (comma-separated user IDs)</label>
+                  <input type="text" class="w-full bg-gray-100 border border-gray-300 dark:bg-gray-800 dark:border-gray-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                         :value="(config.channels.discord.allowFrom || []).join(', ')"
+                         @input="config.channels.discord.allowFrom = $event.target.value.split(',').map(s => s.trim()).filter(Boolean)">
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 dark:bg-gray-900 dark:border-gray-800 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-3">
                 <h3 class="font-medium">WhatsApp</h3>
                 <label class="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" class="rounded bg-gray-100 border-gray-300 dark:bg-gray-800 dark:border-gray-600" x-model="config.channels.whatsapp.enabled">
@@ -495,6 +518,7 @@
         agents: { defaults: { workspace: '~/.nanobot/workspace', model: 'anthropic/claude-opus-4-5', maxTokens: 8192, temperature: 0.7, maxToolIterations: 20 } },
         channels: {
           telegram: { enabled: false, token: '', allowFrom: [], proxy: null },
+          discord: { enabled: false, token: '', allowFrom: [] },
           whatsapp: { enabled: false, bridgeUrl: 'ws://localhost:3001', allowFrom: [] },
           feishu: { enabled: false, appId: '', appSecret: '', encryptKey: '', verificationToken: '', allowFrom: [] },
         },
