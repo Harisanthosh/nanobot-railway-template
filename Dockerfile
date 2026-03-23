@@ -18,6 +18,8 @@ RUN mkdir -p /data/.nanobot
 
 COPY server.py /app/server.py
 COPY templates/ /app/templates/
+COPY agents/ /app/agents/
+COPY cron/ /app/cron/
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
