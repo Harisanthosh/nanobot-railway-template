@@ -4,7 +4,7 @@
     {
       "id": "stocks-dcf-4h",
       "name": "Stocks DCF Market Scan (every 4h)",
-      "enabled": false,
+      "enabled": true,
       "schedule": {
         "kind": "cron",
         "expr": "0 */4 * * *",
@@ -15,7 +15,7 @@
         "message": "Read your stocks-analyst skill file from the workspace skills directory, then execute it fully: perform a DCF-based screen of US, EU and Asian equity markets and post the formatted entry-point report to the Discord #stocks channel.",
         "deliver": true,
         "channel": "discord",
-        "to": "REPLACE_WITH_STOCKS_DISCORD_CHANNEL_ID"
+        "to": "1485532803390246953"
       },
       "state": {
         "nextRunAtMs": null,
@@ -30,7 +30,7 @@
     {
       "id": "dev-review-6h",
       "name": "GitHub Submission Reviewer (every 6h)",
-      "enabled": false,
+      "enabled": true,
       "schedule": {
         "kind": "cron",
         "expr": "30 */6 * * *",
@@ -41,7 +41,7 @@
         "message": "Read your dev-reviewer skill file from the workspace skills directory, then execute it fully: review new student submissions in the Think_AI_With_Blitzwork repo, write feedback.txt files, commit them back, and post a summary to the Discord #dev channel.",
         "deliver": true,
         "channel": "discord",
-        "to": "REPLACE_WITH_DEV_DISCORD_CHANNEL_ID"
+        "to": "1485532865839239178"
       },
       "state": {
         "nextRunAtMs": null,
